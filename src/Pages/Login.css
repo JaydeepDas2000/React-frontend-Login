@@ -1,0 +1,14 @@
+.login_form {
+    margin-top: 100px;
+    text-align: center;
+    display: flex;
+    margin-inline: 300px;
+}
+
+.btn-login {
+    margin-top: 50px;
+}
+
+.from-label {
+    margin-top: 20px;
+}
