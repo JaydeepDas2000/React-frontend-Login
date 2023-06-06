@@ -2,12 +2,12 @@ import React from 'react'
 import { Navbar, Container } from 'react-bootstrap'
 import './Login.css';
 
-const Success = () => {
+const Products = () => {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand>Success Page</Navbar.Brand>
+                    <Navbar.Brand>Products Page</Navbar.Brand>
                 </Container>
             </Navbar>
             <div className='login_form'>
@@ -19,4 +19,4 @@ const Success = () => {
     )
 }
 
-export default Success
+export default Products

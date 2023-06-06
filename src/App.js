@@ -1,25 +1,37 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Pages/Login';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Success from './Pages/Success';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Products from './Pages/Products';
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = localStorage.getItem('successMessage') !== null;
+
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
+  );
+};
+
 
 function App() {
   return (
     <div className="App">
-      {/* <Login /> */}
       {/* <Router>
         <Switch>
-          <Route path='/login' Component={Login} />
-          <Route path='/success' Component={Success} />
-          <Redirect to="/create" />
+          <Route exact path="/" component={Login} />
+          <Route path="/success" component={Products} />
         </Switch>
       </Router> */}
       <Router>
-        <Switch>
+        <div>
           <Route exact path="/" component={Login} />
-          <Route path="/success" component={Success} />
-        </Switch>
+          <ProtectedRoute exact path="/products" component={Products} />
+        </div>
       </Router>
     </div>
   );
