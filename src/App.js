@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Pages/Login';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Products from './Pages/Products';
+import ProductDetails from './Pages/ProductDetails'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = localStorage.getItem('successMessage') !== null;
@@ -31,6 +32,7 @@ function App() {
         <div>
           <Route exact path="/" component={Login} />
           <ProtectedRoute exact path="/products" component={Products} />
+          <ProtectedRoute exact path="/products/:productId" component={ProductDetails} />
         </div>
       </Router>
     </div>

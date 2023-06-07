@@ -16,15 +16,6 @@ const Login = () => {
 
     const user = { username, password }
 
-      // try {
-      // const response = await fetch('/checkauth', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ username, password }),
-      // });
-
       axios.post('http://localhost:8080/checkauth', user)
         .then(response => {
           if (response.data[0].loginResponse === 'Successful Login') {
@@ -42,22 +33,6 @@ const Login = () => {
         .catch(error => {
           console.error('Login error : ', error);
         });
-
-      // ##########################################################
-
-      // const user = { username, password }
-      // axios.post('http://localhost:8080/checkauth', user)
-      //   .then(response => {
-      //     console.log(response.data);
-      //     if (response.data[0].loginResponse === 'Successful Login') {
-      //       history.push('/products');
-      //     } else {
-      //       alert(response.data[0].loginResponse)
-      //     }
-      //   })
-      //   .catch(error => {
-      //     console.error(error);
-      //   })
     };
 
 
@@ -79,6 +54,7 @@ const Login = () => {
                   value={username}
                   placeholder='Input Username'
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
                 <Form.Label className='from-label'>Password</Form.Label>
                 <Form.Control
@@ -87,6 +63,7 @@ const Login = () => {
                   value={password}
                   placeholder='Input Password'
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Group>
               <Button type="submit" className='btn-login'>Login</Button>
